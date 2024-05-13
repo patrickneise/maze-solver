@@ -173,7 +173,7 @@ class Maze:
             solved = self._solve_r(0, 0)
         return solved
 
-    def _solve_r(self, row_index: int, col_index: int):
+    def _solve_r(self, row_index: int, col_index: int) -> bool:
         self._animate()
         current_cell = self._cells[row_index][col_index]
         current_cell.visited = True
