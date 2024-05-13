@@ -50,9 +50,10 @@ class Cell:
             ),
         ]
 
-        for wall in walls:
-            wall_color = "black" if wall[0] else "white"
-            self._win.draw_line(wall[1], wall_color)
+        if self._win:
+            for wall in walls:
+                wall_color = "black" if wall[0] else "white"
+                self._win.draw_line(wall[1], wall_color)
 
     def draw_move(self, to_cell: Self, undo: bool = False):
         start_x = (self._x1 + self._x2) / 2
@@ -115,8 +116,9 @@ class Maze:
         self._animate()
 
     def _animate(self):
-        self._win.redraw()
-        time.sleep(0.05)
+        if self._win:
+            self._win.redraw()
+            time.sleep(0.05)
 
     def _break_entrance_and_exit(self):
         entrance = self._cells[0][0]
